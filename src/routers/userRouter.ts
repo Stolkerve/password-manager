@@ -1,5 +1,5 @@
 import { Request, Response, Router } from "express";
-import bcrypt from "bcrypt"
+import bcrypt from "bcrypt";
 import jsonwebtoken from "jsonwebtoken";
 import { query } from "../database";
 import User from "../models/user"
@@ -30,7 +30,6 @@ router.get("/login", async (req: Request, res: Response) => {
     } catch(e: any) {
         res.sendStatus(400);
     }
-
 })
 
 router.post("/signup", async (req: Request, res: Response) => {
@@ -40,6 +39,7 @@ router.post("/signup", async (req: Request, res: Response) => {
     try {
         await query("INSERT INTO users SET ?", [user]);
     } catch(e: any) {
+        console.log(e)
         res.sendStatus(400);
         return;
     }

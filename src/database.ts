@@ -12,7 +12,7 @@ export async function initConnection() {
 
     await query(`
         CREATE TABLE IF NOT EXISTS users(
-            id INT UNSIGNED AUTO_INCREMENT NOT NULL,
+            id INT UNSIGNED AUTO_INCREMENT UNIQUE NOT NULL,
             email VARCHAR(255) UNIQUE NOT NULL,
             password VARCHAR(72) NOT NULL,
             PRIMARY KEY(id)
@@ -21,7 +21,7 @@ export async function initConnection() {
 
     await query(`
         CREATE TABLE IF NOT EXISTS vaults(
-            id INT UNSIGNED AUTO_INCREMENT NOT NULL,
+            id INT UNSIGNED AUTO_INCREMENT UNIQUE NOT NULL,
             userID INT UNSIGNED NOT NULL,
             passwordName VARCHAR(255) NOT NULL,
             password VARCHAR(72) NOT NULL,
